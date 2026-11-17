@@ -6,11 +6,9 @@ import useFetch from "../hooks/useFetch.js";
 
 import {
   getServices,
-  getDoctors,
   getReviews
 } from "../services/api";
 
-import DoctorCard from "../components/DoctorCard.jsx";
 import Stars from "../components/Stars.jsx";
 import EmptyState from "../components/EmptyState.jsx";
 import AppointmentForm from "../components/AppointmentForm.jsx";
@@ -40,7 +38,6 @@ export default function Home() {
   const { content } = useSite();
 
   const { data: services } = useFetch(getServices);
-  const { data: doctors, loading: dLoading } = useFetch(getDoctors);
   const { data: reviews } = useFetch(getReviews);
 
   const aboutText = content.aboutText || DEFAULT_ABOUT;
@@ -256,61 +253,6 @@ export default function Home() {
             ))}
 
           </div>
-        </div>
-      </section>
-
-      {/* 5. DOCTORS */}
-
-      <section className="section section-alt" id="doctors">
-        <div className="container">
-
-          <div className="section-head center reveal">
-
-            <span className="eyebrow">Our doctors</span>
-
-            <h2>Meet our doctors</h2>
-
-            <p>
-              Choose the doctor you prefer when you book your visit.
-            </p>
-
-          </div>
-
-          {dLoading ? null : doctors.length === 0 ? (
-
-            <EmptyState title="Doctor profiles coming soon">
-              You can still book an appointment and the clinic will help you choose the right doctor.
-            </EmptyState>
-
-          ) : (
-
-            <div className="row g-4">
-
-              {doctors.slice(0, 4).map((d) => (
-
-                <div
-                  className="col-sm-6 col-lg-3 reveal"
-                  key={d._id}
-                >
-                  <DoctorCard doctor={d} />
-                </div>
-
-              ))}
-
-            </div>
-
-          )}
-
-          {doctors.length > 4 && (
-
-            <p className="mt-4 text-center">
-              <Link to="/doctors" className="link-arrow">
-                See all doctors →
-              </Link>
-            </p>
-
-          )}
-
         </div>
       </section>
 
@@ -760,9 +702,9 @@ export default function Home() {
 
                   <Link
                     to="/contact"
-                    className="btn-gp btn-sm-gp"
+                    className="btn-contact-action"
                   >
-                    Send an enquiry
+                    Send an enquiry &rarr;
                   </Link>
 
                 </div>

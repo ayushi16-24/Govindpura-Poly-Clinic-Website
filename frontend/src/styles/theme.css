@@ -2,8 +2,8 @@
 :root {
   --ink: #0b2a3c;
   --ink-soft: #46606f;
-  --blue: #0b6fb8;
-  --blue-dark: #085a97;
+  --blue: #0077c8;
+  --blue-dark: #005a9c;
   --teal: #0e9f9a;
   --teal-dark: #0a817d;
   --mist: #eaf5fb;
@@ -47,6 +47,30 @@ p { max-width: 68ch; }
 .btn-gp-outline:hover { background: var(--blue); color: #fff; }
 .btn-gp:disabled, .btn-teal:disabled { opacity: .6; cursor: not-allowed; }
 .btn-sm-gp { padding: .35rem .9rem; font-size: .88rem; }
+
+.btn-contact-action, .btn-map-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: #0077c8;
+  color: #ffffff !important;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.65rem 1.45rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(0, 119, 200, 0.28);
+  transition: all 0.2s ease;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.btn-contact-action:hover, .btn-map-action:hover {
+  background: #005fa3;
+  color: #ffffff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 119, 200, 0.38);
+}
 
 /* ---------- Top Location Bar ---------- */
 .top-location-bar {
