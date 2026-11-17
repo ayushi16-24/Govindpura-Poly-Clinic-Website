@@ -10,7 +10,6 @@ import {
   getReviews
 } from "../services/api";
 
-import ServiceCard from "../components/ServiceCard.jsx";
 import DoctorCard from "../components/DoctorCard.jsx";
 import Stars from "../components/Stars.jsx";
 import EmptyState from "../components/EmptyState.jsx";
@@ -29,7 +28,9 @@ import {
   approachPoints,
   facilities,
   patientCare,
-  faqs
+  faqs,
+  mission,
+  vision
 } from "../config/clinicInfo.js";
 
 const DEFAULT_ABOUT =
@@ -38,7 +39,7 @@ const DEFAULT_ABOUT =
 export default function Home() {
   const { content } = useSite();
 
-  const { data: services, loading: sLoading } = useFetch(getServices);
+  const { data: services } = useFetch(getServices);
   const { data: doctors, loading: dLoading } = useFetch(getDoctors);
   const { data: reviews } = useFetch(getReviews);
 
@@ -132,9 +133,9 @@ export default function Home() {
       <section className="section" id="about">
         <div className="container">
 
-          <div className="row g-5 align-items-center">
+          <div className="row g-5 align-items-center mb-5">
 
-            <div className="col-lg-6 reveal">
+            <div className="col-lg-7 reveal">
 
               <span className="eyebrow">About us</span>
 
@@ -152,88 +153,62 @@ export default function Home() {
 
             </div>
 
-            <div className="col-lg-6 reveal">
+            <div className="col-lg-5 reveal">
 
-              <div className="feature-panel">
-
-                {approachPoints.slice(0, 3).map((p) => (
-
-                  <div className="mini-point" key={p.title}>
-
-                    <span className="glyph-box">
-                      <Glyph name={p.icon} />
-                    </span>
-
-                    <div>
-                      <strong>{p.title}</strong>
-                      <span>{p.text}</span>
-                    </div>
-
-                  </div>
-
-                ))}
-
+              <div className="who-we-are-image-card">
+                <img
+                  src="/images/life-care-lab.jpg"
+                  alt="Life Care Laboratory - Govindpura Poly Clinic"
+                  className="who-we-are-image"
+                />
               </div>
 
             </div>
 
           </div>
-        </div>
-      </section>
 
-      {/* 3. SERVICES */}
+          {/* Mission & Vision cards right below on Home page */}
+          <div className="row g-4 pt-2">
 
-      <section className="section section-alt" id="services">
-        <div className="container">
-
-          <div className="section-head center reveal">
-
-            <span className="eyebrow">
-              Our medical services
-            </span>
-
-            <h2>Care for you and your family</h2>
-
-            <p>
-              Explore the services available at the clinic and book the one you need.
-            </p>
-
-          </div>
-
-          {sLoading ? null : services.length === 0 ? (
-
-            <EmptyState title="Our service list is being updated">
-              Please call the clinic for details about available services.
-            </EmptyState>
-
-          ) : (
-
-            <div className="row g-4">
-
-              {services.slice(0, 6).map((s) => (
-
-                <div
-                  className="col-md-6 col-lg-4 reveal"
-                  key={s._id}
-                >
-                  <ServiceCard service={s} showBook />
+            <div className="col-md-6 reveal">
+              <div className="mv-card">
+                <div className="mv-card-img-wrap">
+                  <img
+                    src="/images/mission.jpg"
+                    alt="Doctor preparing medicine at Govindpura Poly Clinic - Our Mission"
+                    className="mv-card-img"
+                  />
                 </div>
-
-              ))}
-
+                <div className="d-flex align-items-center gap-2 mb-2">
+                  <span className="glyph-box">
+                    <Glyph name="target" />
+                  </span>
+                  <h3 className="m-0">Our mission</h3>
+                </div>
+                <p>{mission}</p>
+              </div>
             </div>
 
-          )}
+            <div className="col-md-6 reveal">
+              <div className="mv-card">
+                <div className="mv-card-img-wrap">
+                  <img
+                    src="/images/vision.jpg"
+                    alt="Doctor consulting patient at Govindpura Poly Clinic - Our Vision"
+                    className="mv-card-img vision-img"
+                  />
+                </div>
+                <div className="d-flex align-items-center gap-2 mb-2">
+                  <span className="glyph-box">
+                    <Glyph name="star" />
+                  </span>
+                  <h3 className="m-0">Our vision</h3>
+                </div>
+                <p>{vision}</p>
+              </div>
+            </div>
 
-          {services.length > 6 && (
-
-            <p className="mt-4 text-center">
-              <Link to="/services" className="link-arrow">
-                See all services →
-              </Link>
-            </p>
-
-          )}
+          </div>
 
         </div>
       </section>
