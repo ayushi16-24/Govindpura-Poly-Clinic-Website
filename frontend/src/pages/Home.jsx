@@ -618,102 +618,82 @@ export default function Home() {
 
             <div className="col-lg-5 reveal">
 
-              <div className="hero-card h-100">
+              <div className="contact-info-card h-100">
 
-                <h3 className="h5 mb-2">
+                <h3 className="contact-card-title">
                   {content.clinicName}
                 </h3>
 
-                <div className="info-row">
+                <div className="contact-info-list">
 
-                  <PinIcon />
-
-                  <div>
-                    <span className="label">Address</span>
-
-                    <span className="value">
-                      {content.address}
+                  <div className="contact-info-item">
+                    <span className="contact-icon-badge">
+                      <PinIcon />
                     </span>
+                    <div>
+                      <span className="contact-info-label">Address</span>
+                      <span className="contact-info-val">{content.address}</span>
+                    </div>
                   </div>
+
+                  {content.phone && (
+                    <div className="contact-info-item">
+                      <span className="contact-icon-badge">
+                        <PhoneIcon />
+                      </span>
+                      <div>
+                        <span className="contact-info-label">Phone</span>
+                        <a className="contact-info-val" href={`tel:${content.phone}`}>
+                          {content.phone}
+                        </a>
+                      </div>
+                    </div>
+                  )}
+
+                  {content.email && (
+                    <div className="contact-info-item">
+                      <span className="contact-icon-badge">
+                        <MailIcon />
+                      </span>
+                      <div>
+                        <span className="contact-info-label">Email</span>
+                        <a className="contact-info-val" href={`mailto:${content.email}`}>
+                          {content.email}
+                        </a>
+                      </div>
+                    </div>
+                  )}
+
+                  {content.timings && (
+                    <div className="contact-info-item">
+                      <span className="contact-icon-badge">
+                        <ClockIcon />
+                      </span>
+                      <div>
+                        <span className="contact-info-label">Timings</span>
+                        <span className="contact-info-val">{content.timings}</span>
+                      </div>
+                    </div>
+                  )}
 
                 </div>
 
-                {content.phone && (
-
-                  <div className="info-row">
-
-                    <PhoneIcon />
-
-                    <div>
-                      <span className="label">Phone</span>
-
-                      <a
-                        className="value"
-                        href={`tel:${content.phone}`}
-                      >
-                        {content.phone}
-                      </a>
-                    </div>
-
-                  </div>
-
-                )}
-
-                {content.email && (
-
-                  <div className="info-row">
-
-                    <MailIcon />
-
-                    <div>
-                      <span className="label">Email</span>
-
-                      <a
-                        className="value"
-                        href={`mailto:${content.email}`}
-                      >
-                        {content.email}
-                      </a>
-                    </div>
-
-                  </div>
-
-                )}
-
-                {content.timings && (
-
-                  <div className="info-row">
-
-                    <ClockIcon />
-
-                    <div>
-                      <span className="label">Timings</span>
-
-                      <span className="value">
-                        {content.timings}
-                      </span>
-                    </div>
-
-                  </div>
-
-                )}
-
-                <div className="mt-3">
-
+                <div className="mt-4 pt-1">
                   <Link
                     to="/contact"
                     className="btn-contact-action"
                   >
                     Send an enquiry &rarr;
                   </Link>
-
                 </div>
 
               </div>
             </div>
 
             <div className="col-lg-7 reveal">
-              <MapEmbed />
+              <div className="contact-map-card h-100">
+                <MapEmbed />
+              </div>
             </div>
 
           </div>
