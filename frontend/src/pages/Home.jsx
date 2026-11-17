@@ -127,67 +127,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* TRUST STRIP */}
-
-      <div className="ref-trust-strip">
-        <div className="container">
-          <div className="row g-0 align-items-center">
-
-            <div className="col-6 col-md-3 trust-col">
-              <div className="trust-col-inner">
-                <span className="trust-icon-box">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0077c8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <rect x="3" y="4" width="18" height="18" rx="2" />
-                    <path d="M16 2v4M8 2v4M3 10h18" />
-                    <path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01M16 18h.01" />
-                  </svg>
-                </span>
-                <span className="trust-col-text">Easy online booking</span>
-              </div>
-            </div>
-
-            <div className="col-6 col-md-3 trust-col">
-              <div className="trust-col-inner">
-                <span className="trust-icon-box">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0077c8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                    <circle cx="10" cy="7" r="4" />
-                    <path d="M18 8a3 3 0 0 1 0 6M22 11h-4" />
-                  </svg>
-                </span>
-                <span className="trust-col-text">Choose your doctor</span>
-              </div>
-            </div>
-
-            <div className="col-6 col-md-3 trust-col">
-              <div className="trust-col-inner">
-                <span className="trust-icon-box">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0077c8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-                    <line x1="8" y1="9" x2="16" y2="9" />
-                    <line x1="8" y1="13" x2="13" y2="13" />
-                  </svg>
-                </span>
-                <span className="trust-col-text">Send enquiries anytime</span>
-              </div>
-            </div>
-
-            <div className="col-6 col-md-3 trust-col">
-              <div className="trust-col-inner">
-                <span className="trust-icon-box">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0077c8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z" />
-                    <circle cx="12" cy="10" r="3" />
-                  </svg>
-                </span>
-                <span className="trust-col-text">Directions on Google Maps</span>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-
       {/* 2. ABOUT */}
 
       <section className="section" id="about">
