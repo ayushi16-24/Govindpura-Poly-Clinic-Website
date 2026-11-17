@@ -752,12 +752,39 @@ html { scroll-padding-top: 84px; }
 
 /* Cards */
 .why-card, .facility-card, .approach-card, .mv-card, .dept-card { height: 100%; background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 1.5rem; transition: transform .25s, box-shadow .25s, border-color .25s; }
-.why-card:hover, .facility-card:hover, .approach-card:hover, .svc-card:hover, .doc-card:hover { transform: translateY(-4px); box-shadow: 0 14px 32px rgba(11,42,60,.08); border-color: var(--teal); }
+.why-card:hover, .facility-card:hover, .approach-card:hover, .svc-card:hover, .doc-card:hover, .mv-card:hover { transform: translateY(-4px); box-shadow: 0 14px 32px rgba(11,42,60,.08); border-color: var(--teal); }
 .svc-card, .doc-card { transition: transform .25s, box-shadow .25s, border-color .25s; }
 .why-card h3, .facility-card h3, .approach-card h3, .mv-card h3 { font-size: 1.1rem; margin: 1rem 0 .4rem; }
 .why-card p, .facility-card p, .approach-card p, .mv-card p { color: var(--ink-soft); margin: 0; font-size: .96rem; }
 .approach-card h3 { margin-top: 0; }
-.mv-card { background: linear-gradient(160deg, #fff, var(--mist)); }
+.who-we-are-image-card {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 1.75rem;
+  box-shadow: 0 10px 30px rgba(11, 42, 60, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+}
+.who-we-are-image-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(11, 42, 60, 0.1);
+  border-color: var(--teal);
+}
+.who-we-are-image {
+  max-width: 100%;
+  max-height: 280px;
+  object-fit: contain;
+  display: block;
+}
+
+.mv-card { background: linear-gradient(160deg, #fff, var(--mist)); display: flex; flex-direction: column; }
+.mv-card-img-wrap { width: 100%; height: 260px; border-radius: 14px; overflow: hidden; margin-bottom: 1.25rem; background: #d8edfa; box-shadow: 0 4px 14px rgba(11, 42, 60, 0.08); }
+.mv-card-img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; display: block; transition: transform 0.35s ease; }
+.mv-card-img.vision-img { object-position: center 48%; }
+.mv-card:hover .mv-card-img { transform: scale(1.03); }
 .mv-card p { font-size: 1.05rem; color: var(--ink); }
 .svc-icon svg { width: 26px; height: 26px; }
 .svc-card h3 { font-size: 1.15rem; }

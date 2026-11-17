@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useSite } from "../context/SiteContext.jsx";
 import PageHeader from "../components/PageHeader.jsx";
-import Glyph, { PinIcon, PhoneIcon, ClockIcon } from "../components/Icons.jsx";
+import Glyph from "../components/Icons.jsx";
 import { approachPoints, commitments, mission, vision, facilities, patientCare } from "../config/clinicInfo.js";
 
 export default function About() {
@@ -13,7 +13,7 @@ export default function About() {
       {/* Introduction */}
       <section className="section">
         <div className="container">
-          <div className="row g-5 align-items-start">
+          <div className="row g-5 align-items-center">
             <div className="col-lg-7 reveal">
               <span className="eyebrow">Hospital introduction</span>
               <h2 className="section-title">Who we are</h2>
@@ -23,10 +23,12 @@ export default function About() {
               </p>
             </div>
             <div className="col-lg-5 reveal">
-              <div className="feature-panel">
-                <div className="mini-point"><span className="glyph-box"><PinIcon /></span><div><strong>Address</strong><span>{content.address}</span></div></div>
-                {content.timings && <div className="mini-point"><span className="glyph-box"><ClockIcon /></span><div><strong>Timings</strong><span className="pre-line">{content.timings}</span></div></div>}
-                {content.phone && <div className="mini-point"><span className="glyph-box"><PhoneIcon /></span><div><strong>Phone</strong><span><a href={`tel:${content.phone}`}>{content.phone}</a></span></div></div>}
+              <div className="who-we-are-image-card">
+                <img
+                  src="/images/life-care-lab.jpg"
+                  alt="Life Care Laboratory - Govindpura Poly Clinic"
+                  className="who-we-are-image"
+                />
               </div>
             </div>
           </div>
@@ -39,15 +41,25 @@ export default function About() {
           <div className="row g-4">
             <div className="col-md-6 reveal">
               <div className="mv-card">
-                <span className="glyph-box"><Glyph name="target" /></span>
-                <h3>Our mission</h3>
+                <div className="mv-card-img-wrap">
+                  <img src="/images/mission.jpg" alt="Doctor preparing medicine at Govindpura Poly Clinic - Our Mission" className="mv-card-img" />
+                </div>
+                <div className="d-flex align-items-center gap-2 mb-2">
+                  <span className="glyph-box"><Glyph name="target" /></span>
+                  <h3 className="m-0">Our mission</h3>
+                </div>
                 <p>{mission}</p>
               </div>
             </div>
             <div className="col-md-6 reveal">
               <div className="mv-card">
-                <span className="glyph-box"><Glyph name="star" /></span>
-                <h3>Our vision</h3>
+                <div className="mv-card-img-wrap">
+                  <img src="/images/vision.jpg" alt="Doctor consulting patient at Govindpura Poly Clinic - Our Vision" className="mv-card-img vision-img" />
+                </div>
+                <div className="d-flex align-items-center gap-2 mb-2">
+                  <span className="glyph-box"><Glyph name="star" /></span>
+                  <h3 className="m-0">Our vision</h3>
+                </div>
                 <p>{vision}</p>
               </div>
             </div>
