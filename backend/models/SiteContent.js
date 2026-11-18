@@ -5,11 +5,11 @@ const siteContentSchema = new mongoose.Schema(
   {
     key: { type: String, default: "main", unique: true },
     clinicName: { type: String, default: "Govindpura Poly Clinic", trim: true },
-    tagline: { type: String, default: "", trim: true },
-    heroTitle: { type: String, default: "Aapki sehat, hamari zimmedari", trim: true },
+    tagline: { type: String, default: "Your Health, Our Priority", trim: true },
+    heroTitle: { type: String, default: "Govindpura Poly Clinic", trim: true },
     heroSubtitle: {
       type: String,
-      default: "Jhotwara, Jaipur mein aapke parivaar ki care ke liye.",
+      default: "Your Health, Our Priority",
       trim: true,
     },
     aboutText: { type: String, default: "", trim: true },

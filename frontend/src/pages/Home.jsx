@@ -47,6 +47,16 @@ export default function Home() {
       ? aboutText.slice(0, 360).trim() + "…"
       : aboutText;
 
+  const heroTitle =
+    content.heroTitle && !content.heroTitle.includes("Aapki sehat")
+      ? content.heroTitle
+      : content.clinicName || "Govindpura Poly Clinic";
+
+  const heroSubtitle =
+    content.heroSubtitle && !content.heroSubtitle.includes("Jhotwara, Jaipur mein")
+      ? content.heroSubtitle
+      : content.tagline || "Your Health, Our Priority";
+
   return (
     <>
       {/* 1. HERO SECTION */}
@@ -70,12 +80,14 @@ export default function Home() {
 
                 
                 <h1 className="hero-heading">
-                  {content.heroTitle || content.clinicName || "Govindpura Poly Clinic"}
+                  {heroTitle}
                 </h1>
 
-                <p className="hero-subheading">
-                  {content.heroSubtitle || content.tagline || "Your Health, Our Priority"}
-                </p>
+                {heroSubtitle && (
+                  <p className="hero-subheading">
+                    {heroSubtitle}
+                  </p>
+                )}
 
                 <div className="hero-btn-row">
                   <Link
