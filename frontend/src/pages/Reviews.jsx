@@ -36,7 +36,7 @@ const clinicHighlights = [
 ];
 
 export default function Reviews() {
-  const { data: reviews, loading } = useFetch(getReviews);
+  const { data: reviews, loading, error } = useFetch(getReviews);
   const [form, setForm] = useState({
     patientName: "",
     rating: 0,
@@ -130,6 +130,10 @@ export default function Reviews() {
 
               {loading ? (
                 <p>Loading...</p>
+              ) : error ? (
+                <EmptyState title="Reviews load nahi ho paaye">
+                  Please refresh the page or call the clinic.
+                </EmptyState>
               ) : reviews.length === 0 ? (
                 <EmptyState title="Abhi tak koi review nahi">
                   Pehla review aap likhein.

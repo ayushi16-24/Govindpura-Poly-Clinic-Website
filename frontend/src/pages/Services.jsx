@@ -1,8 +1,11 @@
-
 import { Link } from "react-router-dom";
+import useFetch from "../hooks/useFetch.js";
+import { getServices } from "../services/api";
 import PageHeader from "../components/PageHeader.jsx";
+import ServiceCard from "../components/ServiceCard.jsx";
+import EmptyState from "../components/EmptyState.jsx";
 
-const clinicServices = [
+const fallbackServices = [
   {
     title: "Primary Care",
     points: [
@@ -30,6 +33,8 @@ const clinicServices = [
 ];
 
 export default function Services() {
+  const { data: services, loading, error } = useFetch(getServices);
+
   return (
     <>
       <PageHeader
@@ -39,26 +44,44 @@ export default function Services() {
 
       <section className="section">
         <div className="container">
-          <div className="row g-4">
-            {clinicServices.map((service, index) => (
-              <div
-                className="col-md-6 col-lg-4 reveal"
-                key={index}
-              >
-                <div className="service-card h-100 p-4">
-                  <h3>{service.title}</h3>
-
-                  <ul className="mt-3">
-                    {service.points.map((point, i) => (
-                      <li key={i} className="mb-2">
-                        {point}
-                      </li>
-                    ))}
-                  </ul>
+          {loading ? (
+            <p>Loading services...</p>
+          ) : error ? (
+            <EmptyState title="Services could not be loaded">
+              Please refresh the page or call the clinic.
+            </EmptyState>
+          ) : services && services.length > 0 ? (
+            <div className="row g-4">
+              {services.map((service) => (
+                <div
+                  className="col-md-6 col-lg-4 reveal"
+                  key={service._id}
+                >
+                  <ServiceCard service={service} showBook={true} />
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          ) : (
+            <div className="row g-4">
+              {fallbackServices.map((service, index) => (
+                <div
+                  className="col-md-6 col-lg-4 reveal"
+                  key={index}
+                >
+                  <div className="service-card h-100 p-4">
+                    <h3>{service.title}</h3>
+                    <ul className="mt-3">
+                      {service.points.map((point, i) => (
+                        <li key={i} className="mb-2">
+                          {point}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 

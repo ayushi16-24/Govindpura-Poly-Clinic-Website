@@ -4,6 +4,8 @@
 // sirf local/test database par chalayein, production par nahi.
 import test from "node:test";
 import assert from "node:assert/strict";
+import dotenv from "dotenv";
+dotenv.config();
 
 const BASE = process.env.API_URL || "http://localhost:5000/api";
 const EMAIL = process.env.ADMIN_EMAIL;

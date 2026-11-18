@@ -10,6 +10,10 @@ export const errorHandler = (err, req, res, next) => {
   let statusCode = res.statusCode === 200 ? 500 : res.statusCode;
   let message = err.message;
 
+  if (err.message && err.message.startsWith("CORS:")) {
+    statusCode = 403;
+  }
+
   if (err.name === "CastError") {
     statusCode = 400;
     message = "Invalid ID format";

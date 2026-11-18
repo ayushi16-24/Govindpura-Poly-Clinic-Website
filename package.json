@@ -1,0 +1,15 @@
+{
+  "name": "govindpura-poly-clinic",
+  "version": "1.0.0",
+  "description": "Full Stack Govindpura Poly Clinic Website and Management System",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "npm --prefix frontend install && npm --prefix frontend run build && npm --prefix backend install",
+    "start": "node backend/server.js",
+    "test": "npm --prefix backend run test:smoke"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

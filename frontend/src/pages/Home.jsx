@@ -70,11 +70,11 @@ export default function Home() {
 
                 
                 <h1 className="hero-heading">
-                  Govindpura Poly Clinic
+                  {content.heroTitle || content.clinicName || "Govindpura Poly Clinic"}
                 </h1>
 
                 <p className="hero-subheading">
-                  Your Health, Our Priority
+                  {content.heroSubtitle || content.tagline || "Your Health, Our Priority"}
                 </p>
 
                 <div className="hero-btn-row">
