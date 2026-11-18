@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import Doctor from "../models/Doctor.js";
 import pick from "../utils/pick.js";
 
@@ -5,6 +6,9 @@ const FIELDS = ["name", "specialization", "qualification", "experience", "photo"
 
 // Public: GET /api/doctors
 export const getPublicDoctors = async (req, res) => {
+  if (mongoose.connection.readyState !== 1) {
+    return res.json({ success: true, data: [] });
+  }
   const doctors = await Doctor.find({ isActive: true }).sort({ createdAt: 1 });
   res.json({ success: true, data: doctors });
 };

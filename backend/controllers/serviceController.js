@@ -1,9 +1,13 @@
+import mongoose from "mongoose";
 import Service from "../models/Service.js";
 import pick from "../utils/pick.js";
 
 const FIELDS = ["title", "description", "icon", "image", "isActive"];
 
 export const getPublicServices = async (req, res) => {
+  if (mongoose.connection.readyState !== 1) {
+    return res.json({ success: true, data: [] });
+  }
   const services = await Service.find({ isActive: true }).sort({ createdAt: 1 });
   res.json({ success: true, data: services });
 };

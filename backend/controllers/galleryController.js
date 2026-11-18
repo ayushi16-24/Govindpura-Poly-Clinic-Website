@@ -1,7 +1,11 @@
+import mongoose from "mongoose";
 import GalleryImage from "../models/GalleryImage.js";
 import pick from "../utils/pick.js";
 
 export const getGallery = async (req, res) => {
+  if (mongoose.connection.readyState !== 1) {
+    return res.json({ success: true, data: [] });
+  }
   const images = await GalleryImage.find().sort({ createdAt: -1 });
   res.json({ success: true, data: images });
 };

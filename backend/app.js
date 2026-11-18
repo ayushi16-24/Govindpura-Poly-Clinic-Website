@@ -25,6 +25,25 @@ const allowedOrigins = (process.env.CLIENT_URL || "http://localhost:5173")
   .map((o) => o.trim().replace(/\/$/, ""))
   .filter(Boolean);
 
+const isOriginAllowed = (origin, host) => {
+  if (!origin) return true;
+  if (allowedOrigins.includes(origin)) return true;
+  try {
+    const originUrl = new URL(origin);
+    if (
+      originUrl.host === host ||
+      originUrl.hostname === "localhost" ||
+      originUrl.hostname === "127.0.0.1" ||
+      originUrl.hostname.endsWith(".onrender.com") ||
+      originUrl.hostname.endsWith(".railway.app") ||
+      originUrl.hostname.endsWith(".vercel.app")
+    ) {
+      return true;
+    }
+  } catch {}
+  return false;
+};
+
 app.use(
   helmet({
     contentSecurityPolicy: {
@@ -40,13 +59,12 @@ app.use(
     crossOriginResourcePolicy: { policy: "cross-origin" },
   })
 );
+
 app.use(
-  cors({
-    origin: (origin, cb) => {
-      // origin undefined = Postman/curl jaisi tools ya same-origin requests; allow
-      if (!origin || allowedOrigins.includes(origin)) return cb(null, true);
-      cb(new Error("CORS: ye origin allowed nahi hai"));
-    },
+  cors((req, callback) => {
+    const origin = req.header("Origin");
+    const allowed = isOriginAllowed(origin, req.headers.host);
+    callback(null, { origin: allowed, credentials: true });
   })
 );
 app.use(express.json({ limit: "100kb" }));
@@ -65,6 +83,10 @@ if (fs.existsSync(distPath)) {
   app.use(express.static(distPath));
   app.use((req, res, next) => {
     if (req.method === "GET" && !req.path.startsWith("/api")) {
+      // Missing static files with file extensions should 404, not return index.html
+      if (path.extname(req.path)) {
+        return res.status(404).json({ success: false, message: "Asset not found" });
+      }
       return res.sendFile(path.join(distPath, "index.html"));
     }
     next();

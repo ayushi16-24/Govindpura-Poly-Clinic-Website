@@ -1,8 +1,12 @@
+import mongoose from "mongoose";
 import Review from "../models/Review.js";
 import pick from "../utils/pick.js";
 
 // Public: GET /api/reviews  (sirf approved)
 export const getPublicReviews = async (req, res) => {
+  if (mongoose.connection.readyState !== 1) {
+    return res.json({ success: true, data: [] });
+  }
   const reviews = await Review.find({ isApproved: true }).sort({ createdAt: -1 });
   res.json({ success: true, data: reviews });
 };
